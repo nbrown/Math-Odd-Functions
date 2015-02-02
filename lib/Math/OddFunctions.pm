@@ -3,13 +3,13 @@ use NativeCall;
 
 # libSystem should maybe be libm on Linux?
 
-sub erf(num) returns num is native('libSystem')  { * }
+sub erf(num) returns num is native(Str)  { * }
 sub error-function(Real $a) is export { erf(num.new($a.Num)) }
 
-sub erfc(num) returns num is native('libSystem')  { * }
+sub erfc(num) returns num is native(Str)  { * }
 sub complementary-error-function(Real $a) is export { erfc(num.new($a.Num)) }
 
-sub tgamma(num) returns num is native('libSystem')  { * }
+sub tgamma(num) returns num is native(Str)  { * }
 multi Γ(Real $a) is export { $a == 0 ?? NaN !! tgamma(num.new($a.Num)) }
 multi Γ(Int $a) is export {
     given $a {
