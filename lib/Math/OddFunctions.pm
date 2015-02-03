@@ -24,3 +24,9 @@ multi logΓ(Real $a) is export { $a == 0 ?? NaN !! lgamma(num.new($a.Num)) }
 
 sub log1p-num(num) returns num is native(Str) is symbol('log1p')  { * }
 multi log1p(Real $a) is export { log1p-num(num.new($a.Num)) }
+
+# sub expm1-num(num) returns num is native(Str) is symbol('expm1')  { * }
+# multi expm1(Real $a) is export { expm1-num(num.new($a.Num)) }
+
+sub expm1(Real $a) is export { $a.abs < 1e-5 ?? $a + 0.5*$a*$a !! $a.exp - 1 }
+
