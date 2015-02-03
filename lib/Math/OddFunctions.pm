@@ -21,3 +21,6 @@ multi Γ(Int $a) is export {
 
 sub lgamma(num) returns num is native(Str)  { * }
 multi logΓ(Real $a) is export { $a == 0 ?? NaN !! lgamma(num.new($a.Num)) }
+
+sub log1p-num(num) returns num is native(Str) is symbol('log1p')  { * }
+multi log1p(Real $a) is export { log1p-num(num.new($a.Num)) }
