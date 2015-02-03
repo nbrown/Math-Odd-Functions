@@ -18,3 +18,6 @@ multi Γ(Int $a) is export {
         default { [*] 1..($a - 1) }
     }
 }
+
+sub lgamma(num) returns num is native(Str)  { * }
+multi logΓ(Real $a) is export { $a == 0 ?? NaN !! lgamma(num.new($a.Num)) }
