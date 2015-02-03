@@ -14,7 +14,7 @@ multi Γ(Real $a) is export { $a == 0 ?? NaN !! tgamma(num.new($a.Num)) }
 multi Γ(Int $a) is export {
     given $a {
         when * < 1 { NaN }
-        when * < 13 { tgamma(num.new($a.Num)).Int }
+        when * < 13 { tgamma(num.new($a.Num)).round }
         default { [*] 1..($a - 1) }
     }
 }
